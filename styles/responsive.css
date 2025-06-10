@@ -1,0 +1,497 @@
+/* responsive.css - Адаптивні стилі */
+
+/* Великі екрани (1200px і більше) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .stats-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .student-info {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
+  }
+
+  .filters-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .search-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr auto auto;
+  }
+}
+
+/* Середні екрани (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .container {
+    max-width: 1000px;
+  }
+
+  .stats-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .student-info {
+    grid-template-columns: 1fr 1fr 1fr auto;
+  }
+
+  .filters-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-container {
+    grid-template-columns: 1fr 1fr 1fr auto auto;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Планшети (768px і менше) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    border-radius: 15px;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .tab-button {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .student-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .student-actions {
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+
+  .search-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .filters-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sort-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .list-controls {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .export-controls {
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .filter-section {
+    padding: 15px;
+  }
+
+  .student-card {
+    padding: 15px;
+  }
+}
+
+/* Мобільні телефони (480px і менше) */
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  .container {
+    border-radius: 10px;
+  }
+
+  .header {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .tab-button {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  }
+
+  .student-card {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .student-detail {
+    font-size: 0.9rem;
+  }
+
+  .student-detail strong {
+    font-size: 0.7rem;
+  }
+
+  .student-actions {
+    gap: 5px;
+  }
+
+  .student-actions .btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .modal-content {
+    width: 98%;
+    padding: 15px;
+    max-height: 95vh;
+  }
+
+  .modal-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .filter-section {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .filter-section h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .pagination {
+    font-size: 0.8rem;
+  }
+
+  .pagination button {
+    padding: 4px 8px;
+  }
+
+  .pagination .page-info {
+    font-size: 0.8rem;
+    margin: 0 5px;
+  }
+
+  .empty-state {
+    padding: 30px 10px;
+  }
+
+  .empty-state::before {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+
+  .empty-state h3 {
+    font-size: 1.2rem;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+
+  .alert {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Дуже маленькі екрани (320px і менше) */
+@media (max-width: 320px) {
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .tab-button {
+    padding: 8px 10px;
+    font-size: 0.7rem;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .student-actions .btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .modal-content {
+    padding: 10px;
+  }
+
+  .modal-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Альбомна орієнтація планшетів */
+@media (max-width: 1024px) and (orientation: landscape) {
+  .stats-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .student-info {
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+  }
+
+  .filters-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .search-container {
+    grid-template-columns: 1fr 1fr 1fr auto auto;
+  }
+}
+
+/* Принтери */
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  .container {
+    box-shadow: none;
+    border-radius: 0;
+    background: white;
+  }
+
+  .header {
+    background: white;
+    color: black;
+    border-bottom: 2px solid black;
+  }
+
+  .tabs,
+  .btn,
+  .modal,
+  .pagination,
+  .list-controls,
+  .filter-section {
+    display: none !important;
+  }
+
+  .student-card {
+    break-inside: avoid;
+    border: 1px solid black;
+    margin-bottom: 10pt;
+    padding: 10pt;
+    background: white;
+    box-shadow: none;
+  }
+
+  .student-actions {
+    display: none;
+  }
+
+  .stat-card {
+    background: white;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .alert {
+    border: 1px solid black;
+    background: white;
+    color: black;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
+
+/* Високий контраст */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-gradient: linear-gradient(135deg, #000080 0%, #000040 100%);
+    --secondary-gradient: linear-gradient(135deg, #004080 0%, #002040 100%);
+    --success-gradient: linear-gradient(135deg, #008000 0%, #004000 100%);
+    --danger-gradient: linear-gradient(135deg, #800000 0%, #400000 100%);
+
+    --border-color: #000000;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f0f0;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+
+  .student-card {
+    border: 2px solid var(--border-color);
+  }
+
+  .form-group input,
+  .form-group select {
+    border: 2px solid var(--border-color);
+  }
+}
+
+/* Зменшена анімація */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .student-card:hover {
+    transform: none;
+  }
+
+  .stat-card:hover {
+    transform: none;
+  }
+}

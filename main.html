@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Система управління студентами</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🎓 Система управління студентами</h1>
+        <p>Ефективне управління інформацією про студентів навчального закладу</p>
+      </div>
+
+      <div class="main-content">
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-number" id="totalStudents">0</div>
+            <div class="stat-label">Всього студентів</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="totalGroups">0</div>
+            <div class="stat-label">Груп</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="averageAge">0</div>
+            <div class="stat-label">Середній вік</div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-button active" onclick="switchTab('add')">➕ Додати студента</button>
+          <button class="tab-button" onclick="switchTab('search')">🔍 Пошук та фільтри</button>
+          <button class="tab-button" onclick="switchTab('list')">📋 Список студентів</button>
+        </div>
+
+        <div id="alerts"></div>
+
+        <!-- Додавання студента -->
+        <div id="add-tab" class="tab-content active">
+          <h2>Додати нового студента</h2>
+          <form id="addStudentForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">Ім'я:</label>
+                <input type="text" id="firstName" name="firstName" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Прізвище:</label>
+                <input type="text" id="lastName" name="lastName" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="group">Група:</label>
+                <input type="text" id="group" name="group" required />
+              </div>
+              <div class="form-group">
+                <label for="birthYear">Рік народження:</label>
+                <input type="number" id="birthYear" name="birthYear" min="1900" max="2010" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="course">Курс:</label>
+                <select id="course" name="course" required>
+                  <option value="">Оберіть курс</option>
+                  <option value="1">1 курс</option>
+                  <option value="2">2 курс</option>
+                  <option value="3">3 курс</option>
+                  <option value="4">4 курс</option>
+                  <option value="5">5 курс</option>
+                  <option value="6">6 курс</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="specialty">Спеціальність:</label>
+                <input type="text" id="specialty" name="specialty" required placeholder="Наприклад: Комп'ютерні науки" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Додати студента</button>
+          </form>
+        </div>
+
+        <!-- Пошук та фільтри -->
+        <div id="search-tab" class="tab-content">
+          <h2>Пошук та фільтрація студентів</h2>
+
+          <!-- Пошук -->
+          <div class="filter-section">
+            <h3>🔍 Пошук</h3>
+            <div class="search-container">
+              <input type="text" id="searchFirstName" placeholder="Ім'я" />
+              <input type="text" id="searchLastName" placeholder="Прізвище" />
+              <input type="text" id="searchGroup" placeholder="Група" />
+              <button class="btn btn-primary" onclick="applyFilters()">Застосувати</button>
+              <button class="btn btn-secondary" onclick="clearFilters()">Очистити</button>
+            </div>
+          </div>
+
+          <!-- Фільтри -->
+          <div class="filter-section">
+            <h3>🎛️ Фільтри</h3>
+            <div class="filters-container">
+              <div class="filter-group">
+                <label for="filterCourse">Курс:</label>
+                <select id="filterCourse">
+                  <option value="">Всі курси</option>
+                  <option value="1">1 курс</option>
+                  <option value="2">2 курс</option>
+                  <option value="3">3 курс</option>
+                  <option value="4">4 курс</option>
+                  <option value="5">5 курс</option>
+                  <option value="6">6 курс</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="filterSpecialty">Спеціальність:</label>
+                <select id="filterSpecialty">
+                  <option value="">Всі спеціальності</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="filterAgeFrom">Вік від:</label>
+                <input type="number" id="filterAgeFrom" min="16" max="100" />
+              </div>
+              <div class="filter-group">
+                <label for="filterAgeTo">Вік до:</label>
+                <input type="number" id="filterAgeTo" min="16" max="100" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Сортування -->
+          <div class="filter-section">
+            <h3>📊 Сортування</h3>
+            <div class="sort-container">
+              <select id="sortBy">
+                <option value="lastName">За прізвищем</option>
+                <option value="firstName">За ім'ям</option>
+                <option value="group">За групою</option>
+                <option value="course">За курсом</option>
+                <option value="age">За віком</option>
+                <option value="specialty">За спеціальністю</option>
+              </select>
+              <select id="sortOrder">
+                <option value="asc">За зростанням</option>
+                <option value="desc">За спаданням</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="searchResults" class="student-list"></div>
+        </div>
+
+        <!-- Список студентів -->
+        <div id="list-tab" class="tab-content">
+          <h2>Список всіх студентів</h2>
+          <div class="list-controls">
+            <div class="items-per-page">
+              <label for="itemsPerPage">Показати по:</label>
+              <select id="itemsPerPage" onchange="updatePagination()">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="50">50</option>
+                <option value="all">Всі</option>
+              </select>
+            </div>
+            <div class="export-controls">
+              <button class="btn btn-secondary" onclick="exportToJSON()">📄 Експорт JSON</button>
+              <button class="btn btn-secondary" onclick="exportToCSV()">📊 Експорт CSV</button>
+            </div>
+          </div>
+          <div id="studentsList" class="student-list"></div>
+          <div id="pagination" class="pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальне вікно для редагування -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <h3>Редагувати студента</h3>
+        <form id="editStudentForm">
+          <input type="hidden" id="editId" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editFirstName">Ім'я:</label>
+              <input type="text" id="editFirstName" required />
+            </div>
+            <div class="form-group">
+              <label for="editLastName">Прізвище:</label>
+              <input type="text" id="editLastName" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editGroup">Група:</label>
+              <input type="text" id="editGroup" required />
+            </div>
+            <div class="form-group">
+              <label for="editBirthYear">Рік народження:</label>
+              <input type="number" id="editBirthYear" min="1900" max="2010" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editCourse">Курс:</label>
+              <select id="editCourse" required>
+                <option value="">Оберіть курс</option>
+                <option value="1">1 курс</option>
+                <option value="2">2 курс</option>
+                <option value="3">3 курс</option>
+                <option value="4">4 курс</option>
+                <option value="5">5 курс</option>
+                <option value="6">6 курс</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editSpecialty">Спеціальність:</label>
+              <input type="text" id="editSpecialty" required />
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-danger" onclick="closeEditModal()">Скасувати</button>
+            <button type="submit" class="btn btn-success">Зберегти</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Імпорт JavaScript модулів -->
+    <script src="database.js"></script>
+    <script src="ui-helpers.js"></script>
+    <script src="filters.js"></script>
+    <script src="pagination.js"></script>
+    <script src="export.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
