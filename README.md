@@ -21,11 +21,12 @@
 .
 ├── main.html                 # Основний HTML файл додатку
 ├── main.js                   # Головний файл управління додатком
-├── database.js               # Управління базою даних студентів (localStorage)
-├── ui-helpers.js             # Допоміжні функції для інтерфейсу
-├── filters.js                # Логіка фільтрації та пошуку студентів
-├── pagination.js             # Система пагінації
-├── export.js                 # Функції експорту даних
+└── styles/
+    ├── database.js           # Управління базою даних студентів (localStorage)
+    ├── ui-helpers.js         # Допоміжні функції для інтерфейсу
+    ├── filters.js            # Логіка фільтрації та пошуку студентів
+    ├── pagination.js         # Система пагінації
+    └──export.js              # Функції експорту даних
 └── styles/
     ├── main.css              # Основні стилі та кольорова схема
     ├── components.css        # Стилі компонентів (кнопки, форми, модалі)
@@ -37,8 +38,8 @@
 1. **Склонуйте репозиторій:**
 
    ```bash
-   git clone <URL-репозиторію>
-   cd student-management-system
+   git clone https://github.com/just-Daniel/manage-students.git
+   cd manage-students
    ```
 
 2. **Відкрийте файл [`main.html`](main.html) у веб-браузері.**
